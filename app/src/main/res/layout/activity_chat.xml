@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme.NoActionBar"
+    tools:context=".ChatActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimaryDark"
+
+            app:titleTextColor="@color/colorAccent"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+
+            />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/chat_layout"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:visibility="gone"
+            android:id="@+id/imPreview"
+            android:layout_height="80dp">
+
+
+        </ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/imCamera"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_baseline_camera_alt_24"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+            </ImageView>
+            <ImageView
+                android:id="@+id/imImage"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="5dp"
+
+                android:src="@drawable/ic_baseline_image_24"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+            </ImageView>
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edChat"
+                android:layout_width="0dp"
+                android:layout_weight="10"
+                android:background="@drawable/custombackgroundchat"
+                android:hint="Your message"
+                android:layout_marginLeft="10dp"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="40dp">
+
+            </androidx.appcompat.widget.AppCompatEditText>
+
+            <ImageView
+                android:id="@+id/imSend"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_menu_send"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+            </ImageView>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_above="@id/chat_layout"
+        android:background="#EDEDED"
+        android:layout_marginBottom="8dp"
+        android:layout_height="0.4dp">
+    </View>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyleviewChat"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="4dp"
+        android:padding="5dp"
+        android:layout_above="@id/view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+</RelativeLayout>

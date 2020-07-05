@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "47675204141",
+    "firebase_url": "https://drinkshop-c1f80.firebaseio.com",
+    "project_id": "drinkshop-c1f80",
+    "storage_bucket": "drinkshop-c1f80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47675204141:android:9accfe08fe7f66e5c58ea4",
+        "android_client_info": {
+          "package_name": "com.example.dat.drinksever"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "47675204141-43s214njocv8bomd1hrg2pj1vh4krtdf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dat.drinksever",
+            "certificate_hash": "3742709ff5b559f09d9399cf37f78f7d0d9caeca"
+          }
+        },
+        {
+          "client_id": "47675204141-b7hto4bo34nnpevpamdpih56ut1d86tj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvilLXaMl17_MmAkISIysxmci7ohfs9kc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "47675204141-b7hto4bo34nnpevpamdpih56ut1d86tj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47675204141:android:30bdcd2eba758016c58ea4",
+        "android_client_info": {
+          "package_name": "com.example.dat.drinkshopapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "47675204141-93n4lsg5q0veq74csesrriof7sol88jo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dat.drinkshopapp",
+            "certificate_hash": "3742709ff5b559f09d9399cf37f78f7d0d9caeca"
+          }
+        },
+        {
+          "client_id": "47675204141-b7hto4bo34nnpevpamdpih56ut1d86tj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvilLXaMl17_MmAkISIysxmci7ohfs9kc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "47675204141-b7hto4bo34nnpevpamdpih56ut1d86tj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
