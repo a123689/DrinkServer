@@ -1,5 +1,6 @@
 package com.example.dat.drinksever;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -24,6 +25,11 @@ import com.example.dat.drinksever.Model.Token;
 import com.example.dat.drinksever.Retrofit.IDrinkShopAPI;
 import com.example.dat.drinksever.Retrofit.IFCMService;
 import com.example.dat.drinksever.Utils.Common;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -147,6 +153,17 @@ public class ViewOrderDetailActivity extends AppCompatActivity {
 
         final int orderStatus = spinner_order_status.getSelectedItemPosition() - 1;
 
+        if(orderStatus == 2){
+            Common.currentOrder.setOrderStatus(orderStatus);
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+            reference.child("Order")
+                    .push()
+                    .setValue(Common.currentOrder);
+
+            sendOrderUpdateNotificationShipper(Common.currentOrder,orderStatus);
+
+        }
+
         compositeDisposable.add(mService.updateOrderStatus(Common.currentOrder.getUserPhone(),
                 Common.currentOrder.getOrderId(),
                 orderStatus
@@ -210,6 +227,45 @@ public class ViewOrderDetailActivity extends AppCompatActivity {
                 });
     }
 
+    public void sendOrderUpdateNotificationShipper(final Order order, final int order_status){
+
+
+        mService.getToken("app_shipper","2")
+                .enqueue(new Callback<Token>() {
+                    @Override
+                    public void onResponse(Call<Token> call, Response<Token> response) {
+
+                        Token token = response.body();
+                        DataMessage dataMessage = new DataMessage();
+                        Map<String,String> datasend = new HashMap<>();
+                        datasend.put("title","You have new ship");
+                        datasend.put("message","Order #"+order.getOrderId()+" Address: "+order.getOrderAddress());
+                        dataMessage.to = token.getToken();
+                        dataMessage.setData(datasend);
+                        ifcmService.sendNotification(dataMessage)
+                                .enqueue(new Callback<MyResponse>() {
+                                    @Override
+                                    public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                                        if(response.body().success ==  1){
+                                            Toast.makeText(ViewOrderDetailActivity.this, "Order  updated!", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<MyResponse> call, Throwable t) {
+
+                                    }
+                                });
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Token> call, Throwable t) {
+                        Log.d("dat123",t.getMessage());
+                    }
+                });
+    }
     @Override
     protected void onDestroy() {
         compositeDisposable.clear();

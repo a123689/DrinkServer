@@ -16,8 +16,8 @@ import com.example.dat.drinksever.R;
 import com.example.dat.drinksever.ShowOrderActivity;
 
 public class NotificationHelper extends ContextWrapper {
-    private static final String DEVFPTPOLY_ID = "com.example.dat.drinksever.Services.DAT";
-    private static final String DEVFPTPOLY_NAME = "Drink Shop Server";
+    private static final String DEV_ID = "com.example.dat.drinksever.Services.DAT";
+    private static final String DEV_NAME = "Drink Shop Server";
 
     public NotificationHelper(Context base) {
         super(base);
@@ -28,8 +28,8 @@ public class NotificationHelper extends ContextWrapper {
     private NotificationManager notificationManager;
     @TargetApi(Build.VERSION_CODES.O)
     private void createChanel() {
-        NotificationChannel channel = new NotificationChannel(DEVFPTPOLY_ID
-                , DEVFPTPOLY_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+        NotificationChannel channel = new NotificationChannel(DEV_ID
+                , DEV_NAME, NotificationManager.IMPORTANCE_DEFAULT);
         channel.enableLights(false);
         channel.enableVibration(false);
         channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
@@ -54,7 +54,7 @@ public class NotificationHelper extends ContextWrapper {
         stackBuilder.addParentStack(ShowOrderActivity.class);
         stackBuilder.addNextIntent(resultIntent);
         PendingIntent resultPendingIntent =  PendingIntent.getActivity(this,0,resultIntent, PendingIntent.FLAG_ONE_SHOT);
-        return  new Notification.Builder(getApplicationContext(),DEVFPTPOLY_ID)
+        return  new Notification.Builder(getApplicationContext(),DEV_ID)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setSmallIcon(R.mipmap.ic_launcher)
