@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.dat.drinksever.Adapter.AdapterListChat;
 import com.example.dat.drinksever.Model.ChatList;
